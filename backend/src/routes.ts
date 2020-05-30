@@ -1,13 +1,10 @@
 import Router from 'express';
-import {
-  getProducts,
-  createProduct,
-  deleteProduct,
-} from './controllers/product.controller';
+import ProductController from './controllers/ProductController';
 
-const routes = Router();
+const router = Router();
 
-export default routes
-  .get('/api', getProducts)
-  .post('/api', createProduct)
-  .delete('/api/:id', deleteProduct);
+router.get('/api', ProductController.getProducts);
+router.post('/api', ProductController.createProduct);
+router.delete('/api/:id', ProductController.deleteProduct);
+
+export default router;
