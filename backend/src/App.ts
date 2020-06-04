@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
-import router from './routes';
+import ProductRouter from './routes/ProductRouter';
 
 class App {
   public express: express.Application;
@@ -45,7 +45,7 @@ class App {
   }
 
   private routes(): void {
-    this.express.use(router);
+    this.express.use(ProductRouter);
   }
 }
 
