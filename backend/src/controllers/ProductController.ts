@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 
 import Product from '../models/Product';
+import IProductController from '../types/IProductController';
 
-class ProductController {
+class ProductController implements IProductController {
   // @desc		Get all products
   // @route		GET /api
   async getProducts(req: Request, res: Response) {
