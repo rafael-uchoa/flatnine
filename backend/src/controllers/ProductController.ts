@@ -6,7 +6,7 @@ import IProductController from '../types/IProductController';
 class ProductController implements IProductController {
   // @desc		Get all products
   // @route		GET /api
-  async getProducts(req: Request, res: Response) {
+  public async getProducts(req: Request, res: Response) {
     try {
       const product = await Product.find();
 
@@ -18,7 +18,7 @@ class ProductController implements IProductController {
 
   // @desc		Get all products in a category
   // @route		GET /api/:category
-  async getProductsInCategory(req: Request, res: Response) {
+  public async getProductsInCategory(req: Request, res: Response) {
     try {
       const product = await Product.find({ category: req.params.category });
 
@@ -35,7 +35,7 @@ class ProductController implements IProductController {
 
   // @desc		Create a product
   // @route		POST /api
-  async createProduct(req: Request, res: Response) {
+  public async createProduct(req: Request, res: Response) {
     try {
       const product = await Product.create(req.body);
 
@@ -47,7 +47,7 @@ class ProductController implements IProductController {
 
   // @desc		Delete a product
   // @route		DELETE /api/:id
-  async deleteProduct(req: Request, res: Response) {
+  public async deleteProduct(req: Request, res: Response) {
     try {
       const product = await Product.findByIdAndRemove(req.params.id);
 
