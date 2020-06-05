@@ -14,13 +14,17 @@ const Category: React.FC = () => {
   const route = useRoute();
   const category = String(route.params);
 
-  async function loadCategory() {
-    const res = await api.get(category);
-    setProducts(res.data);
-  }
-
   useEffect(() => {
-    loadCategory();
+    async function fetchCategoryData() {
+      try {
+        const res = await api.get(category);
+        setProducts(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    fetchCategoryData();
   }, []);
 
   return (
