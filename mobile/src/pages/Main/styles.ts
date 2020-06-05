@@ -8,39 +8,30 @@ export default StyleSheet.create({
     paddingTop: Constants.statusBarHeight + 20,
     backgroundColor: '#171717',
   },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  headerLogo: {
-    height: 40,
-    width: 40,
-  },
-  headerText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  categories: {
+  sectionText: {
     marginTop: 24,
+    color: 'white',
+    fontSize: 32,
+    fontWeight: 'bold',
   },
   categoriesImage: {
     height: 150,
     width: 150,
-    marginRight: 10,
     marginTop: 10,
+    marginRight: 10,
     borderRadius: 15,
+    overflow: 'hidden',
   },
   categoriesImageFilter: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(0, 0, 0, .5)',
+    backgroundColor: 'rgba(0, 0, 0, .3)',
     borderRadius: 15,
   },
   categoriesImageText: {
     color: 'white',
     fontSize: 18,
+    textTransform: 'capitalize',
   },
 });
