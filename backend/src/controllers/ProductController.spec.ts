@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import request from 'supertest';
 import server from '../App';
 import Product from '@models/Product';
@@ -28,30 +27,19 @@ function expectBody(body: ITestBody) {
 }
 
 describe('Product Controller Test', () => {
-  beforeAll(async () => {
-    if (!process.env.MONGO_URL)
-      throw new Error('MongoDB server not initialized');
+  beforeEach(async () => await Product.deleteMany(testBody));
 
-    await mongoose.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    });
-  });
-
-  afterAll(async () => await mongoose.connection.close());
-
-  beforeEach(async () => await Product.deleteMany({}));
-
-  // ProductController.getProducts
+  // @desc		ProductController.getProducts
+  // @route		GET /api
   it('should get all products', async () => {
     const res = await request(server).get('/api');
 
-    expect(res.body).toEqual([]);
+    expect(res.body).toBeDefined();
     expect(res.status).toBe(200);
   });
 
-  // ProductController.getProductsInCategory
+  // @desc		ProductController.getProductsInCategory
+  // @route		GET /api/:category
   it('should get all products in a category', async () => {
     await request(server).post('/api').send(testBody);
 
@@ -68,7 +56,8 @@ describe('Product Controller Test', () => {
     expect(res.status).toBe(400);
   });
 
-  // ProductController.createProduct
+  // @desc		ProductController.createProduct
+  // @route		POST /api
   it('should create a new product', async () => {
     const res = await request(server).post('/api').send(testBody);
 
@@ -83,7 +72,8 @@ describe('Product Controller Test', () => {
     expect(res.status).toBe(400);
   });
 
-  // ProductController.deleteProduct
+  // @desc		ProductController.deleteProduct
+  // @route		DELETE /api/:id
   it('should delete a product', async () => {
     const createdProduct = await request(server).post('/api').send(testBody);
 
