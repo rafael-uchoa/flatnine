@@ -15,7 +15,15 @@
     "mongoose": "^5.9.15"
   },
   "devDependencies": {
+    "@shelf/jest-mongodb": "^1.1.5",
+    "@types/jest": "^26.0.0",
+    "@types/supertest": "^2.0.9",
+    "jest": "^26.0.1",
+    "jest-cli": "^26.0.1",
+    "supertest": "^4.0.2",
+    "ts-jest": "^26.1.0",
     "ts-node-dev": "^1.0.0-pre.44",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^3.9.3"
   }
 }

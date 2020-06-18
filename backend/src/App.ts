@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
-import ProductRouter from './routes/ProductRouter';
+import ProductRouter from '@routes/ProductRouter';
 
 class App {
   public express: express.Application;

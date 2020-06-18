@@ -1,7 +1,13 @@
 import { Request, Response } from 'express';
 
-import Product from '../models/Product';
-import IProductController from '../types/IProductController';
+import Product from '@models/Product';
+
+interface IProductController {
+  getProducts(req: Request, res: Response): Promise<void>;
+  getProductsInCategory(req: Request, res: Response): Promise<void>;
+  createProduct(req: Request, res: Response): Promise<void>;
+  deleteProduct(req: Request, res: Response): Promise<void>;
+}
 
 class ProductController implements IProductController {
   // @desc		Get all products
