@@ -14,13 +14,13 @@ class ProductController implements IProductController {
   // @route		GET /api
   public async getProducts(req: Request, res: Response) {
     try {
-      const product = await Product.find();
+      const products = await Product.find();
 
       res.status(200);
-      res.json(product);
-    } catch (err) {
+      res.json({ success: true, products });
+    } catch (error) {
       res.status(500);
-      res.json(err);
+      res.json({ success: false, error });
     }
   }
 
@@ -28,20 +28,22 @@ class ProductController implements IProductController {
   // @route		GET /api/:category
   public async getProductsInCategory(req: Request, res: Response) {
     try {
-      const product = await Product.find({ category: req.params.category });
+      const { category } = req.params;
 
-      if (product.length === 0) {
+      const products = await Product.find({ category });
+
+      if (products.length === 0) {
         res.status(400);
-        res.json('Category not found');
+        res.json({ success: false, error: 'Category not found.' });
 
         return;
       }
 
       res.status(200);
-      res.json(product);
-    } catch (err) {
+      res.json({ success: true, products });
+    } catch (error) {
       res.status(500);
-      res.json(err);
+      res.json({ success: false, error });
     }
   }
 
@@ -49,13 +51,15 @@ class ProductController implements IProductController {
   // @route		POST /api
   public async createProduct(req: Request, res: Response) {
     try {
-      const product = await Product.create(req.body);
+      const { name, price, category } = req.body;
+
+      const product = await Product.create({ name, price, category });
 
       res.status(201);
-      res.json(product);
-    } catch (err) {
+      res.json({ success: true, product });
+    } catch (error) {
       res.status(400);
-      res.json(err);
+      res.json({ success: false, error });
     }
   }
 
@@ -63,20 +67,22 @@ class ProductController implements IProductController {
   // @route		DELETE /api/:id
   public async deleteProduct(req: Request, res: Response) {
     try {
-      const product = await Product.findByIdAndRemove(req.params.id);
+      const { id } = req.params;
+
+      const product = await Product.findByIdAndRemove(id);
 
       if (!product) {
         res.status(400);
-        res.json('Product not found');
+        res.json({ success: false, error: 'Product not found' });
 
         return;
       }
 
       res.status(200);
-      res.json(product);
-    } catch (err) {
+      res.json({ success: true, product });
+    } catch (error) {
       res.status(404);
-      res.json(err);
+      res.json({ success: false, error });
     }
   }
 }
