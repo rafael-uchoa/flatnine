@@ -16,9 +16,11 @@ class ProductController implements IProductController {
     try {
       const product = await Product.find();
 
-      res.status(200).json(product);
+      res.status(200);
+      res.json(product);
     } catch (err) {
-      res.status(500).json(err);
+      res.status(500);
+      res.json(err);
     }
   }
 
@@ -29,13 +31,17 @@ class ProductController implements IProductController {
       const product = await Product.find({ category: req.params.category });
 
       if (product.length === 0) {
-        res.status(400).json('Category not found');
+        res.status(400);
+        res.json('Category not found');
+
         return;
       }
 
-      res.status(200).json(product);
+      res.status(200);
+      res.json(product);
     } catch (err) {
-      res.status(500).json(err);
+      res.status(500);
+      res.json(err);
     }
   }
 
@@ -45,9 +51,11 @@ class ProductController implements IProductController {
     try {
       const product = await Product.create(req.body);
 
-      res.status(201).json(product);
+      res.status(201);
+      res.json(product);
     } catch (err) {
-      res.status(400).json(err);
+      res.status(400);
+      res.json(err);
     }
   }
 
@@ -58,13 +66,17 @@ class ProductController implements IProductController {
       const product = await Product.findByIdAndRemove(req.params.id);
 
       if (!product) {
-        res.status(400).json('Product not found');
+        res.status(400);
+        res.json('Product not found');
+
         return;
       }
 
-      res.status(200).json(product);
+      res.status(200);
+      res.json(product);
     } catch (err) {
-      res.status(404).json(err);
+      res.status(404);
+      res.json(err);
     }
   }
 }
