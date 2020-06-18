@@ -93,7 +93,7 @@ describe('Product Controller Test', () => {
     expect(res.status).toBe(200);
   });
 
-  it('should not delete a product that does not exit', async () => {
+  it('should not delete a product that does not exist', async () => {
     const res = await request(server).delete('/api/UnexistingId');
 
     expect(res.body).toBe('Product not found');
