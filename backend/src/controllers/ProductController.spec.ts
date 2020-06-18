@@ -2,32 +2,26 @@ import request from 'supertest';
 import server from '../App';
 import Product from '@models/Product';
 
-interface ITestBody {
-  __v: string;
-  _id: string;
+interface ITestProduct {
   name: string;
   price: 77;
   category: string;
-  createdAt: Date;
 }
 
-const testBody = {
+const testProduct = {
   name: 'Test Product',
   price: 77,
   category: 'Test Category',
 };
 
-function expectBody(body: ITestBody) {
-  expect(body.__v).toBeDefined();
-  expect(body._id).toBeDefined();
-  expect(body.createdAt).toBeDefined();
-  expect(body.name).toBe('Test Product');
-  expect(body.price).toBe(77);
-  expect(body.category).toBe('Test Category');
+function expectProduct(product: ITestProduct) {
+  expect(product.name).toBe('Test Product');
+  expect(product.price).toBe(77);
+  expect(product.category).toBe('Test Category');
 }
 
 describe('Product Controller Test', () => {
-  beforeEach(async () => await Product.deleteMany(testBody));
+  beforeEach(async () => await Product.deleteMany(testProduct));
 
   // @desc		ProductController.getProducts
   // @route		GET /api
@@ -41,52 +35,75 @@ describe('Product Controller Test', () => {
   // @desc		ProductController.getProductsInCategory
   // @route		GET /api/:category
   it('should get all products in a category', async () => {
-    await request(server).post('/api').send(testBody);
+    await request(server).post('/api').send(testProduct);
 
-    const res = await request(server).get(`/api/${testBody.category}`);
+    const res = await request(server).get(`/api/${testProduct.category}`);
 
-    expectBody(res.body[0]);
+    const { success, products } = res.body;
+
+    expectProduct(products[0]);
+
+    expect(success).toBe(true);
     expect(res.status).toBe(200);
   });
 
   it('should not find products in an unexisting category', async () => {
     const res = await request(server).get('/api/UnexistingCategory');
 
-    expect(res.body).toBe('Category not found');
+    const { success, error } = res.body;
+
+    expect(success).toBe(false);
+    expect(error).toBe('Category not found.');
     expect(res.status).toBe(400);
   });
 
   // @desc		ProductController.createProduct
   // @route		POST /api
   it('should create a new product', async () => {
-    const res = await request(server).post('/api').send(testBody);
+    const res = await request(server).post('/api').send(testProduct);
 
-    expectBody(res.body);
+    const { success, product } = res.body;
+
+    expectProduct(product);
+
+    expect(success).toBe(true);
     expect(res.status).toBe(201);
   });
 
   it('should not create a new product with wrong params', async () => {
     const res = await request(server).post('/api').send({ cool: true });
 
-    expect(res.body._message).toBe('Product validation failed');
+    const { success, error } = res.body;
+
+    expect(success).toBe(false);
+    expect(error).toBe('Validation error.');
     expect(res.status).toBe(400);
   });
 
   // @desc		ProductController.deleteProduct
   // @route		DELETE /api/:id
   it('should delete a product', async () => {
-    const createdProduct = await request(server).post('/api').send(testBody);
+    const createdProduct = await request(server).post('/api').send(testProduct);
 
-    const res = await request(server).delete(`/api/${createdProduct.body._id}`);
+    const res = await request(server).delete(
+      `/api/${createdProduct.body.product._id}`
+    );
 
-    expectBody(res.body);
+    const { success, product } = res.body;
+
+    expectProduct(product);
+
+    expect(success).toBe(true);
     expect(res.status).toBe(200);
   });
 
   it('should not delete a product that does not exist', async () => {
     const res = await request(server).delete('/api/UnexistingId');
 
-    expect(res.body).toBe('Product not found');
+    const { success, error } = res.body;
+
+    expect(success).toBe(false);
+    expect(error).toBe('Product not found.');
     expect(res.status).toBe(400);
   });
 });

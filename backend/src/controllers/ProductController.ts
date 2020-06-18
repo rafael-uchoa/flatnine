@@ -53,6 +53,13 @@ class ProductController implements IProductController {
     try {
       const { name, price, category } = req.body;
 
+      if (!name || !price || !category) {
+        res.status(400);
+        res.json({ success: false, error: 'Validation error.' });
+
+        return;
+      }
+
       const product = await Product.create({ name, price, category });
 
       res.status(201);
@@ -73,7 +80,7 @@ class ProductController implements IProductController {
 
       if (!product) {
         res.status(400);
-        res.json({ success: false, error: 'Product not found' });
+        res.json({ success: false, error: 'Product not found.' });
 
         return;
       }
