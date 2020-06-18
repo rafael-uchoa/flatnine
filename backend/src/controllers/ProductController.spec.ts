@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import request from 'supertest';
 import server from '../App';
-
 import Product from '@models/Product';
 
 interface ITestBody {
