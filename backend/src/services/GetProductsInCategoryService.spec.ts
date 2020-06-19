@@ -8,7 +8,7 @@ const testProduct = {
   category: 'Test Category',
 };
 
-describe('DeleteProductService Test', () => {
+describe('GetProductsInCategoryService Test', () => {
   beforeAll(async () => {
     if (!process.env.MONGO_URL)
       throw new Error('MongoDB server not initialized');
