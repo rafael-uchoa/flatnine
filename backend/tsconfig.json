@@ -19,6 +19,7 @@
     "paths": {
       "@controllers/*": ["./controllers/*"],
       "@models/*": ["./models/*"],
+      "@services/*": ["./services/*"],
       "@routes/*": ["./routes/*"]
     }
   },

@@ -1,6 +1,9 @@
 import { Request, Response } from 'express';
 
-import Product from '@models/Product';
+import GetProductsService from '@services/GetProductsService';
+import GetProductsInCategoryService from '@services/GetProductsInCategoryService';
+import CreateProductService from '@services/CreateProductService';
+import DeleteProductService from '@services/DeleteProductService';
 
 interface IProductController {
   getProducts(req: Request, res: Response): Promise<void>;
@@ -14,13 +17,13 @@ class ProductController implements IProductController {
   // @route		GET /api
   public async getProducts(req: Request, res: Response) {
     try {
-      const products = await Product.find();
+      const products = await GetProductsService.run();
 
       res.status(200);
       res.json({ success: true, products });
     } catch (error) {
       res.status(500);
-      res.json({ success: false, error });
+      res.json({ success: false, error: error.message });
     }
   }
 
@@ -28,22 +31,15 @@ class ProductController implements IProductController {
   // @route		GET /api/:category
   public async getProductsInCategory(req: Request, res: Response) {
     try {
-      const { category } = req.params;
-
-      const products = await Product.find({ category });
-
-      if (products.length === 0) {
-        res.status(400);
-        res.json({ success: false, error: 'Category not found.' });
-
-        return;
-      }
+      const products = await GetProductsInCategoryService.run(
+        req.params.category
+      );
 
       res.status(200);
       res.json({ success: true, products });
     } catch (error) {
       res.status(500);
-      res.json({ success: false, error });
+      res.json({ success: false, error: error.message });
     }
   }
 
@@ -53,20 +49,13 @@ class ProductController implements IProductController {
     try {
       const { name, price, category } = req.body;
 
-      if (!name || !price || !category) {
-        res.status(400);
-        res.json({ success: false, error: 'Validation error.' });
-
-        return;
-      }
-
-      const product = await Product.create({ name, price, category });
+      const product = await CreateProductService.run(name, price, category);
 
       res.status(201);
       res.json({ success: true, product });
     } catch (error) {
       res.status(400);
-      res.json({ success: false, error });
+      res.json({ success: false, error: error.message });
     }
   }
 
@@ -74,22 +63,13 @@ class ProductController implements IProductController {
   // @route		DELETE /api/:id
   public async deleteProduct(req: Request, res: Response) {
     try {
-      const { id } = req.params;
-
-      const product = await Product.findByIdAndRemove(id);
-
-      if (!product) {
-        res.status(400);
-        res.json({ success: false, error: 'Product not found.' });
-
-        return;
-      }
+      const product = await DeleteProductService.run(req.params.id);
 
       res.status(200);
       res.json({ success: true, product });
     } catch (error) {
       res.status(404);
-      res.json({ success: false, error });
+      res.json({ success: false, error: error.message });
     }
   }
 }
