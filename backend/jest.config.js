@@ -5,6 +5,7 @@ module.exports = {
   clearMocks: true,
   preset: '@shelf/jest-mongodb',
   testEnvironment: 'node',
+  coverageDirectory: '<rootDir>/',
   testMatch: ['<rootDir>/src/**/*.spec.ts'],
   transform: {
     '^.+\\.ts$': 'ts-jest',

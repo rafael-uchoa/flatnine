@@ -53,8 +53,8 @@ describe('Product Controller Test', () => {
     const { success, error } = res.body;
 
     expect(success).toBe(false);
-    expect(error).toBe('Category not found.');
-    expect(res.status).toBe(400);
+    expect(error).toBe('No products found in this category.');
+    expect(res.status).toBe(500);
   });
 
   // @desc		ProductController.createProduct
@@ -70,13 +70,88 @@ describe('Product Controller Test', () => {
     expect(res.status).toBe(201);
   });
 
-  it('should not create a new product with wrong params', async () => {
-    const res = await request(server).post('/api').send({ cool: true });
+  it('should ignore extra params when creating a new product', async () => {
+    const res = await request(server)
+      .post('/api')
+      .send({ ...testProduct, cool: true });
+
+    const { success, product } = res.body;
+
+    expectProduct(product);
+
+    expect(success).toBe(true);
+    expect(res.status).toBe(201);
+  });
+
+  it('should not create a new product without name', async () => {
+    const res = await request(server)
+      .post('/api')
+      .send({ price: 77, category: 'Test Category' });
 
     const { success, error } = res.body;
 
     expect(success).toBe(false);
-    expect(error).toBe('Validation error.');
+    expect(error).toBe('Missing product name.');
+    expect(res.status).toBe(400);
+  });
+
+  it('should not create a new product with empty name', async () => {
+    const res = await request(server)
+      .post('/api')
+      .send({ name: '', price: 77, category: 'Test Category' });
+
+    const { success, error } = res.body;
+
+    expect(success).toBe(false);
+    expect(error).toBe('Missing product name.');
+    expect(res.status).toBe(400);
+  });
+
+  it('should not create a new product without price', async () => {
+    const res = await request(server)
+      .post('/api')
+      .send({ name: '', category: 'Test Category' });
+
+    const { success, error } = res.body;
+
+    expect(success).toBe(false);
+    expect(error).toBe('Missing product name.');
+    expect(res.status).toBe(400);
+  });
+
+  it('should not create a new product that costs 0', async () => {
+    const res = await request(server)
+      .post('/api')
+      .send({ name: '', price: 0, category: 'Test Category' });
+
+    const { success, error } = res.body;
+
+    expect(success).toBe(false);
+    expect(error).toBe('Missing product name.');
+    expect(res.status).toBe(400);
+  });
+
+  it('should not create a new product without category', async () => {
+    const res = await request(server)
+      .post('/api')
+      .send({ name: 'Test Product', price: 77 });
+
+    const { success, error } = res.body;
+
+    expect(success).toBe(false);
+    expect(error).toBe('Missing product category.');
+    expect(res.status).toBe(400);
+  });
+
+  it('should not create a new product with empty category', async () => {
+    const res = await request(server)
+      .post('/api')
+      .send({ name: 'Test Product', price: 77, category: '' });
+
+    const { success, error } = res.body;
+
+    expect(success).toBe(false);
+    expect(error).toBe('Missing product category.');
     expect(res.status).toBe(400);
   });
 
@@ -104,6 +179,6 @@ describe('Product Controller Test', () => {
 
     expect(success).toBe(false);
     expect(error).toBe('Product not found.');
-    expect(res.status).toBe(400);
+    expect(res.status).toBe(404);
   });
 });
