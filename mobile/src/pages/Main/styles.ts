@@ -9,7 +9,7 @@ export default StyleSheet.create({
     backgroundColor: '#171717',
   },
   sectionText: {
-    marginTop: 24,
+    marginTop: 20,
     color: 'white',
     fontSize: 32,
     fontWeight: 'bold',
