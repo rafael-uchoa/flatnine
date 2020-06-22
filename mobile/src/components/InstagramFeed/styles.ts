@@ -2,36 +2,25 @@ import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
 export default StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 10,
-    paddingTop: Constants.statusBarHeight + 20,
-    backgroundColor: '#171717',
-  },
-  sectionText: {
+  header: {
     marginTop: 20,
     marginBottom: 10,
     color: 'white',
     fontSize: 32,
     fontWeight: 'bold',
   },
-  categoriesImage: {
+  image: {
     height: 150,
     width: 150,
     marginRight: 10,
     borderRadius: 15,
     overflow: 'hidden',
   },
-  categoriesImageFilter: {
+  imageFilter: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'rgba(0, 0, 0, .3)',
     borderRadius: 15,
-  },
-  categoriesImageText: {
-    color: 'white',
-    fontSize: 18,
-    textTransform: 'capitalize',
   },
 });
