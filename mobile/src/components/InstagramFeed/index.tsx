@@ -16,6 +16,7 @@ const InstagramFeed: React.FC = () => (
     <FlatList
       horizontal
       data={instagram}
+      showsHorizontalScrollIndicator={false}
       renderItem={({ item }) => (
         <TouchableOpacity>
           <ImageBackground source={item.image} style={styles.image}>

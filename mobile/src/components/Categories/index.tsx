@@ -24,6 +24,7 @@ const InstagramFeed: React.FC = () => {
       <FlatList
         horizontal
         data={categories}
+        showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
           <TouchableOpacity onPress={() => navigateToCategory(item.key)}>
             <ImageBackground source={item.image} style={styles.image}>
