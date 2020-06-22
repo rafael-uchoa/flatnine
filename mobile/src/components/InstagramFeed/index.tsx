@@ -1,27 +1,21 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  ImageBackground,
-} from 'react-native';
-import styles from './styles';
+import { View, FlatList, TouchableOpacity } from 'react-native';
+import { Header, InstagramImage, InstagramImageFilter } from './styles';
 
 import instagram from '../../constants/instagram';
 
 const InstagramFeed: React.FC = () => (
   <View>
-    <Text style={styles.header}>Instagram Feed</Text>
+    <Header>Instagram Feed</Header>
     <FlatList
       horizontal
       data={instagram}
       showsHorizontalScrollIndicator={false}
       renderItem={({ item }) => (
         <TouchableOpacity>
-          <ImageBackground source={item.image} style={styles.image}>
-            <View style={styles.imageFilter} />
-          </ImageBackground>
+          <InstagramImage source={item.image}>
+            <InstagramImageFilter />
+          </InstagramImage>
         </TouchableOpacity>
       )}
     />

@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native';
+import { TouchableOpacity, FlatList } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import styles from './styles';
+import {
+  Container,
+  ProductsContainer,
+  ProductContainer,
+  ProductImage,
+  ProductTextContainer,
+  ProductName,
+  ProductPrice,
+} from './styles';
+
 import api from '../../services/api';
 import guitar from '../../assets/guitar.png';
-
 import Header from '../../components/Header';
 
 const Category: React.FC = () => {
@@ -27,33 +35,34 @@ const Category: React.FC = () => {
     fetchCategoryData();
   }, []);
 
+  function formatPriceToBRL(price: number) {
+    return Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    }).format(price);
+  }
+
   return (
-    <View style={styles.container}>
+    <Container>
       <Header title={category} />
-      <View style={styles.productsContainer}>
+      <ProductsContainer>
         <FlatList
           data={products}
           keyExtractor={(product) => String(product._id)}
           renderItem={({ item: product }) => (
-            <TouchableOpacity
-              style={styles.productContainer}
-              onPress={() => console.log('Product!')}
-            >
-              <Image source={guitar} style={styles.productImage} />
-              <View style={styles.productTextContainer}>
-                <Text style={styles.productName}>{product.name}</Text>
-                <Text style={styles.productPrice}>
-                  {Intl.NumberFormat('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                  }).format(product.price)}
-                </Text>
-              </View>
-            </TouchableOpacity>
+            <ProductContainer>
+              <TouchableOpacity onPress={() => console.log('Product!')}>
+                <ProductImage source={guitar} />
+                <ProductTextContainer>
+                  <ProductName>{product.name}</ProductName>
+                  <ProductPrice>{formatPriceToBRL(product.price)}</ProductPrice>
+                </ProductTextContainer>
+              </TouchableOpacity>
+            </ProductContainer>
           )}
         />
-      </View>
-    </View>
+      </ProductsContainer>
+    </Container>
   );
 };
 

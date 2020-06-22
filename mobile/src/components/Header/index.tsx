@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import styles from './styles';
+import { Container, HeaderLogo, HeaderText } from './styles';
 
 import logo from '../../assets/logo.png';
 
@@ -12,14 +12,18 @@ interface Props {
 const Header: React.FC<Props> = ({ title }) => {
   const navigation = useNavigation();
 
+  function navigateToMain() {
+    navigation.navigate('Main');
+  }
+
   return (
-    <View style={styles.header}>
-      <TouchableOpacity onPress={() => navigation.navigate('Main')}>
-        <Image source={logo} style={styles.headerLogo} />
+    <Container>
+      <TouchableOpacity onPress={navigateToMain}>
+        <HeaderLogo source={logo} />
       </TouchableOpacity>
-      <Text style={styles.headerText}>{title}</Text>
-      <Text style={styles.headerText}>+</Text>
-    </View>
+      <HeaderText>{title}</HeaderText>
+      <HeaderText>+</HeaderText>
+    </Container>
   );
 };
 

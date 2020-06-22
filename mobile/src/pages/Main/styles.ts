@@ -1,11 +1,13 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
 import Constants from 'expo-constants';
 
-export default StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 10,
-    paddingTop: Constants.statusBarHeight + 20,
-    backgroundColor: '#171717',
-  },
-});
+const STATUSBAR_HEIGHT = `${Constants.statusBarHeight + 20}px`;
+
+const Container = styled.View`
+  flex: 1;
+  padding: 0 10px;
+  padding-top: ${STATUSBAR_HEIGHT};
+  background-color: #171717;
+`;
+
+export { Container };

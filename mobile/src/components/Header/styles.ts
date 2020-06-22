@@ -1,19 +1,21 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
 
-export default StyleSheet.create({
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  headerLogo: {
-    height: 40,
-    width: 40,
-  },
-  headerText: {
-    color: 'white',
-    fontSize: 24,
-    fontWeight: 'bold',
-    textTransform: 'capitalize',
-  },
-});
+const Container = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const HeaderLogo = styled.Image`
+  height: 40px;
+  width: 40px;
+`;
+
+const HeaderText = styled.Text`
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: capitalize;
+`;
+
+export { Container, HeaderLogo, HeaderText };
