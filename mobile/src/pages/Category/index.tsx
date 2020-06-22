@@ -18,7 +18,7 @@ const Category: React.FC = () => {
     async function fetchCategoryData() {
       try {
         const res = await api.get(category);
-        setProducts(res.data);
+        setProducts(res.data.products);
       } catch (err) {
         console.log(err);
       }
@@ -30,9 +30,6 @@ const Category: React.FC = () => {
   return (
     <View style={styles.container}>
       <Header title={category} />
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Text>{category}</Text>
-      </TouchableOpacity>
       <View style={styles.productsContainer}>
         <FlatList
           data={products}
