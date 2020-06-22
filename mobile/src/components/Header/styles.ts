@@ -12,7 +12,7 @@ export default StyleSheet.create({
   },
   headerText: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 24,
     fontWeight: 'bold',
     textTransform: 'capitalize',
   },
