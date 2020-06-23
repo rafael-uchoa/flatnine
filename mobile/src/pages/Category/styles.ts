@@ -30,11 +30,23 @@ const ProductImage = styled.Image`
   width: 100%;
 `;
 
+const ProductStarsContainer = styled.View`
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  padding: 14px 14px 0;
+`;
+
+const ProductStarContainer = styled.View`
+  margin-right: 7px;
+`;
+
 const ProductTextContainer = styled.View`
   width: 100%;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 14px;
+  padding: 7px 14px 14px;
 `;
 
 const ProductName = styled.Text`
@@ -54,6 +66,8 @@ export {
   ProductsContainer,
   ProductContainer,
   ProductImage,
+  ProductStarsContainer,
+  ProductStarContainer,
   ProductTextContainer,
   ProductName,
   ProductPrice,

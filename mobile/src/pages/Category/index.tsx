@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity, FlatList } from 'react-native';
+import { View, TouchableOpacity, FlatList } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { FontAwesome } from '@expo/vector-icons';
 import {
   Container,
   ProductsContainer,
   ProductContainer,
   ProductImage,
+  ProductStarsContainer,
+  ProductStarContainer,
   ProductTextContainer,
   ProductName,
   ProductPrice,
@@ -41,6 +44,20 @@ const Category: React.FC = () => {
     }).format(price);
   }
 
+  function renderStars() {
+    let starsArr = [];
+
+    for (let i = 0; i < 5; i++) {
+      starsArr.push(
+        <ProductStarContainer key={i}>
+          <FontAwesome name="star" size={32} color="#ff0132" />
+        </ProductStarContainer>
+      );
+    }
+
+    return starsArr;
+  }
+
   return (
     <Container>
       <Header title={category} />
@@ -52,6 +69,7 @@ const Category: React.FC = () => {
             <ProductContainer>
               <TouchableOpacity onPress={() => console.log('Product!')}>
                 <ProductImage source={{ uri: product.imageUrl }} />
+                <ProductStarsContainer>{renderStars()}</ProductStarsContainer>
                 <ProductTextContainer>
                   <ProductName>{product.name}</ProductName>
                   <ProductPrice>{formatPriceToBRL(product.price)}</ProductPrice>
