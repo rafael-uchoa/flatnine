@@ -25,17 +25,17 @@ const Category: React.FC = () => {
   const category = String(route.params);
 
   useEffect(() => {
-    async function fetchCategoryData() {
-      try {
-        const res = await api.get(category);
-        setProducts(res.data.products);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-
-    fetchCategoryData();
+    fetchProducts();
   }, []);
+
+  async function fetchProducts() {
+    try {
+      const res = await api.get(category);
+      setProducts(res.data.products);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   function formatPriceToBRL(price: number) {
     return Intl.NumberFormat('pt-BR', {
