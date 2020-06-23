@@ -5,6 +5,7 @@ const testProduct = {
   name: 'Test Product',
   price: 77,
   category: 'Test Category',
+  imageUrl: 'http://testproduct.com/testimage.jpg',
 };
 
 describe('Product Model Test', () => {
@@ -34,15 +35,16 @@ describe('Product Model Test', () => {
     expect(res[0].name).toBe('Test Product');
     expect(res[0].price).toBe(77);
     expect(res[0].category).toBe('Test Category');
+    expect(res[0].imageUrl).toBe('http://testproduct.com/testimage.jpg');
   });
 
   it('should not create user without name', async () => {
     let error = null;
 
-    const { price, category } = testProduct;
+    const { price, category, imageUrl } = testProduct;
 
     try {
-      const res = await Product.create(price, category);
+      const res = await Product.create(price, category, imageUrl);
       await res.validate();
     } catch (err) {
       error = err;
@@ -54,10 +56,10 @@ describe('Product Model Test', () => {
   it('should not create user without price', async () => {
     let error = null;
 
-    const { name, category } = testProduct;
+    const { name, category, imageUrl } = testProduct;
 
     try {
-      const res = await Product.create(name, category);
+      const res = await Product.create(name, category, imageUrl);
       await res.validate();
     } catch (err) {
       error = err;
@@ -69,10 +71,25 @@ describe('Product Model Test', () => {
   it('should not create user without category', async () => {
     let error = null;
 
-    const { name, price } = testProduct;
+    const { name, price, imageUrl } = testProduct;
 
     try {
-      const res = await Product.create(name, price);
+      const res = await Product.create(name, price, imageUrl);
+      await res.validate();
+    } catch (err) {
+      error = err;
+    }
+
+    expect(error).not.toBeNull();
+  });
+
+  it('should not create user without image url', async () => {
+    let error = null;
+
+    const { name, price, category } = testProduct;
+
+    try {
+      const res = await Product.create(name, price, category);
       await res.validate();
     } catch (err) {
       error = err;

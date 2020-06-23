@@ -47,9 +47,14 @@ class ProductController implements IProductController {
   // @route		POST /api
   public async createProduct(req: Request, res: Response) {
     try {
-      const { name, price, category } = req.body;
+      const { name, price, category, imageUrl } = req.body;
 
-      const product = await CreateProductService.run(name, price, category);
+      const product = await CreateProductService.run(
+        name,
+        price,
+        category,
+        imageUrl
+      );
 
       res.status(201);
       res.json({ success: true, product });

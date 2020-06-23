@@ -6,18 +6,21 @@ interface ITestProduct {
   name: string;
   price: 77;
   category: string;
+  imageUrl: string;
 }
 
 const testProduct = {
   name: 'Test Product',
   price: 77,
   category: 'Test Category',
+  imageUrl: 'http://testproduct.com/testimage.jpg',
 };
 
 function expectProduct(product: ITestProduct) {
   expect(product.name).toBe('Test Product');
   expect(product.price).toBe(77);
   expect(product.category).toBe('Test Category');
+  expect(product.imageUrl).toBe('http://testproduct.com/testimage.jpg');
 }
 
 describe('Product Controller Test', () => {
@@ -84,9 +87,11 @@ describe('Product Controller Test', () => {
   });
 
   it('should not create a new product without name', async () => {
+    const { price, category, imageUrl } = testProduct;
+
     const res = await request(server)
       .post('/api')
-      .send({ price: 77, category: 'Test Category' });
+      .send({ price, category, imageUrl });
 
     const { success, error } = res.body;
 
@@ -96,9 +101,11 @@ describe('Product Controller Test', () => {
   });
 
   it('should not create a new product with empty name', async () => {
+    const { price, category, imageUrl } = testProduct;
+
     const res = await request(server)
       .post('/api')
-      .send({ name: '', price: 77, category: 'Test Category' });
+      .send({ name: '', price, category, imageUrl });
 
     const { success, error } = res.body;
 
@@ -108,33 +115,39 @@ describe('Product Controller Test', () => {
   });
 
   it('should not create a new product without price', async () => {
+    const { name, category, imageUrl } = testProduct;
+
     const res = await request(server)
       .post('/api')
-      .send({ name: '', category: 'Test Category' });
+      .send({ name, category, imageUrl });
 
     const { success, error } = res.body;
 
     expect(success).toBe(false);
-    expect(error).toBe('Missing product name.');
+    expect(error).toBe('Missing product price.');
     expect(res.status).toBe(400);
   });
 
   it('should not create a new product that costs 0', async () => {
+    const { name, category, imageUrl } = testProduct;
+
     const res = await request(server)
       .post('/api')
-      .send({ name: '', price: 0, category: 'Test Category' });
+      .send({ name, price: 0, category, imageUrl });
 
     const { success, error } = res.body;
 
     expect(success).toBe(false);
-    expect(error).toBe('Missing product name.');
+    expect(error).toBe('Missing product price.');
     expect(res.status).toBe(400);
   });
 
   it('should not create a new product without category', async () => {
+    const { name, price, imageUrl } = testProduct;
+
     const res = await request(server)
       .post('/api')
-      .send({ name: 'Test Product', price: 77 });
+      .send({ name, price, imageUrl });
 
     const { success, error } = res.body;
 
@@ -144,14 +157,44 @@ describe('Product Controller Test', () => {
   });
 
   it('should not create a new product with empty category', async () => {
+    const { name, price, imageUrl } = testProduct;
+
     const res = await request(server)
       .post('/api')
-      .send({ name: 'Test Product', price: 77, category: '' });
+      .send({ name, price, category: '', imageUrl });
 
     const { success, error } = res.body;
 
     expect(success).toBe(false);
     expect(error).toBe('Missing product category.');
+    expect(res.status).toBe(400);
+  });
+
+  it('should not create a new product without image url', async () => {
+    const { name, price, category } = testProduct;
+
+    const res = await request(server)
+      .post('/api')
+      .send({ name, price, category });
+
+    const { success, error } = res.body;
+
+    expect(success).toBe(false);
+    expect(error).toBe('Missing product image url.');
+    expect(res.status).toBe(400);
+  });
+
+  it('should not create a new product with empty image url', async () => {
+    const { name, price, category } = testProduct;
+
+    const res = await request(server)
+      .post('/api')
+      .send({ name, price, category, imageUrl: '' });
+
+    const { success, error } = res.body;
+
+    expect(success).toBe(false);
+    expect(error).toBe('Missing product image url.');
     expect(res.status).toBe(400);
   });
 

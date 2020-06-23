@@ -6,6 +6,7 @@ const testProduct = {
   name: 'Test Product',
   price: 77,
   category: 'Test Category',
+  imageUrl: 'http://testproduct.com/testimage.jpg',
 };
 
 describe('GetProductsService Test', () => {
@@ -36,14 +37,17 @@ describe('GetProductsService Test', () => {
     expect(res[0].name).toBe('Test Product');
     expect(res[0].price).toBe(77);
     expect(res[0].category).toBe('Test Category');
+    expect(res[0].imageUrl).toBe('http://testproduct.com/testimage.jpg');
 
     expect(res[0].name).toEqual(res[1].name);
     expect(res[0].price).toEqual(res[1].price);
     expect(res[0].category).toEqual(res[1].category);
+    expect(res[0].imageUrl).toEqual(res[1].imageUrl);
 
     expect(res[0].name).toEqual(res[2].name);
     expect(res[0].price).toEqual(res[2].price);
     expect(res[0].category).toEqual(res[2].category);
+    expect(res[0].imageUrl).toEqual(res[2].imageUrl);
 
     expect(res[0].__v).toBeDefined();
     expect(res[0]._id).toBeDefined();

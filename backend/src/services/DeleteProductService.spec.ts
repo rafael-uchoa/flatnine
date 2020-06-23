@@ -6,6 +6,7 @@ const testProduct = {
   name: 'Test Product',
   price: 77,
   category: 'Test Category',
+  imageUrl: 'http://testproduct.com/testimage.jpg',
 };
 
 describe('DeleteProductService Test', () => {
@@ -35,6 +36,7 @@ describe('DeleteProductService Test', () => {
     expect(res.name).toBe('Test Product');
     expect(res.price).toBe(77);
     expect(res.category).toBe('Test Category');
+    expect(res.imageUrl).toBe('http://testproduct.com/testimage.jpg');
   });
 
   it('should not delete product that does not exists', async () => {

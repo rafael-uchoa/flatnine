@@ -6,6 +6,7 @@ const testProduct = {
   name: 'Test Product',
   price: 77,
   category: 'Test Category',
+  imageUrl: 'http://testproduct.com/testimage.jpg',
 };
 
 describe('GetProductsInCategoryService Test', () => {
@@ -35,6 +36,7 @@ describe('GetProductsInCategoryService Test', () => {
     expect(res[0].name).toBe('Test Product');
     expect(res[0].price).toBe(77);
     expect(res[0].category).toBe('Test Category');
+    expect(res[0].imageUrl).toBe('http://testproduct.com/testimage.jpg');
   });
 
   it('should not find products in empty category', async () => {
