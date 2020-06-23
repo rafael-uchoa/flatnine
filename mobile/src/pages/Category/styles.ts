@@ -26,7 +26,7 @@ const ProductContainer = styled.View`
 `;
 
 const ProductImage = styled.Image`
-  height: 240px;
+  height: 400px;
   width: 100%;
 `;
 

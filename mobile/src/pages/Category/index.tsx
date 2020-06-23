@@ -12,7 +12,6 @@ import {
 } from './styles';
 
 import api from '../../services/api';
-import guitar from '../../assets/guitar.png';
 import Header from '../../components/Header';
 
 const Category: React.FC = () => {
@@ -52,7 +51,7 @@ const Category: React.FC = () => {
           renderItem={({ item: product }) => (
             <ProductContainer>
               <TouchableOpacity onPress={() => console.log('Product!')}>
-                <ProductImage source={guitar} />
+                <ProductImage source={{ uri: product.imageUrl }} />
                 <ProductTextContainer>
                   <ProductName>{product.name}</ProductName>
                   <ProductPrice>{formatPriceToBRL(product.price)}</ProductPrice>
