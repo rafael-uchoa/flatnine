@@ -1,26 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity, FlatList } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { FontAwesome } from '@expo/vector-icons';
-import {
-  Container,
-  ProductsContainer,
-  ProductContainer,
-  ProductImage,
-  ProductStarsContainer,
-  ProductStarContainer,
-  ProductTextContainer,
-  ProductName,
-  ProductPrice,
-} from './styles';
+import { FlatList } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import { Container, ProductsContainer } from './styles';
 
 import api from '../../services/api';
 import Header from '../../components/Header';
+import Product from '../../components/Product';
 
 const Category: React.FC = () => {
   const [products, setProducts] = useState();
 
-  const navigation = useNavigation();
   const route = useRoute();
   const category = String(route.params);
 
@@ -37,27 +26,6 @@ const Category: React.FC = () => {
     }
   }
 
-  function formatPriceToBRL(price: number) {
-    return Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-    }).format(price);
-  }
-
-  function renderStars() {
-    let starsArr = [];
-
-    for (let i = 0; i < 5; i++) {
-      starsArr.push(
-        <ProductStarContainer key={i}>
-          <FontAwesome name="star" size={32} color="#ff0132" />
-        </ProductStarContainer>
-      );
-    }
-
-    return starsArr;
-  }
-
   return (
     <Container>
       <Header title={category} />
@@ -66,16 +34,11 @@ const Category: React.FC = () => {
           data={products}
           keyExtractor={(product) => String(product._id)}
           renderItem={({ item: product }) => (
-            <ProductContainer>
-              <TouchableOpacity onPress={() => console.log('Product!')}>
-                <ProductImage source={{ uri: product.imageUrl }} />
-                <ProductStarsContainer>{renderStars()}</ProductStarsContainer>
-                <ProductTextContainer>
-                  <ProductName>{product.name}</ProductName>
-                  <ProductPrice>{formatPriceToBRL(product.price)}</ProductPrice>
-                </ProductTextContainer>
-              </TouchableOpacity>
-            </ProductContainer>
+            <Product
+              imageUrl={product.imageUrl}
+              name={product.name}
+              price={product.price}
+            />
           )}
         />
       </ProductsContainer>
