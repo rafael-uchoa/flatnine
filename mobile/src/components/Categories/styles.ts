@@ -4,30 +4,16 @@ const Header = styled.Text`
   margin-top: 20px;
   margin-bottom: 10px;
   color: white;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: bold;
 `;
 
-const CategoryImage = styled.ImageBackground`
-  height: 150px;
-  width: 150px;
-  margin-right: 10px;
-  border-radius: 15px;
-  overflow: hidden;
-`;
-
-const CategoryImageFilter = styled.View`
-  flex: 1;
+const CategoriesContainer = styled.View`
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 15px;
+  margin-bottom: 10px;
 `;
 
-const CategoryImageText = styled.Text`
-  color: white;
-  font-size: 18px;
-  text-transform: capitalize;
-`;
-
-export { Header, CategoryImage, CategoryImageFilter, CategoryImageText };
+export { Header, CategoriesContainer };
