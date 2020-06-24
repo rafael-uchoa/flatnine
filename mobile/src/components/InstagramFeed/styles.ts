@@ -4,7 +4,7 @@ const Header = styled.Text`
   margin-top: 20px;
   margin-bottom: 10px;
   color: white;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: bold;
 `;
 
