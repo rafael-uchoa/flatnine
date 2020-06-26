@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-const Container = styled.View`
+const HeaderContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -18,4 +18,4 @@ const HeaderText = styled.Text`
   text-transform: capitalize;
 `;
 
-export { Container, HeaderLogo, HeaderText };
+export { HeaderContainer, HeaderLogo, HeaderText };

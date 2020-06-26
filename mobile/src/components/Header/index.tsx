@@ -1,7 +1,8 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { Container, HeaderLogo, HeaderText } from './styles';
+import { HeaderContainer, HeaderLogo, HeaderText } from './styles';
 
 import logo from '../../assets/logo.png';
 
@@ -16,14 +17,18 @@ const Header: React.FC<Props> = ({ title }) => {
     navigation.navigate('Main');
   }
 
+  function openDrawer() {
+    navigation.navigate('Drawer');
+  }
+
   return (
-    <Container>
+    <HeaderContainer>
       <TouchableOpacity onPress={navigateToMain}>
         <HeaderLogo source={logo} />
       </TouchableOpacity>
       <HeaderText>{title}</HeaderText>
-      <HeaderText>+</HeaderText>
-    </Container>
+      <Feather name="menu" onPress={openDrawer} size={32} color="white" />
+    </HeaderContainer>
   );
 };
 
