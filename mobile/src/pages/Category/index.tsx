@@ -33,13 +33,7 @@ const Category: React.FC = () => {
         <FlatList
           data={products}
           keyExtractor={(product) => String(product._id)}
-          renderItem={({ item: product }) => (
-            <ProductCard
-              imageUrl={product.imageUrl}
-              name={product.name}
-              price={product.price}
-            />
-          )}
+          renderItem={({ item: product }) => <ProductCard product={product} />}
         />
       </ProductsContainer>
     </Container>

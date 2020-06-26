@@ -12,21 +12,18 @@ import {
   ProductPrice,
 } from './styles';
 
+import formatPriceToBRL from '../../services/formatPriceToBRL';
+
 interface Props {
-  imageUrl: string;
-  name: string;
-  price: number;
+  product: {
+    imageUrl: string;
+    name: string;
+    price: number;
+  };
 }
 
-const ProductCard: React.FC<Props> = ({ imageUrl, name, price }) => {
+const ProductCard: React.FC<Props> = ({ product }) => {
   const navigation = useNavigation();
-
-  function formatPriceToBRL(price: number) {
-    return Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-    }).format(price);
-  }
 
   function renderStars() {
     let starsArr = [];
@@ -42,14 +39,18 @@ const ProductCard: React.FC<Props> = ({ imageUrl, name, price }) => {
     return starsArr;
   }
 
+  function navigateToProduct(product: any) {
+    navigation.navigate('Product', product);
+  }
+
   return (
     <ProductContainer>
-      <TouchableOpacity onPress={() => console.log('Product!')}>
-        <ProductImage source={{ uri: imageUrl }} />
+      <TouchableOpacity onPress={() => navigateToProduct(product)}>
+        <ProductImage source={{ uri: product.imageUrl }} />
         <ProductStarsContainer>{renderStars()}</ProductStarsContainer>
         <ProductTextContainer>
-          <ProductName>{name}</ProductName>
-          <ProductPrice>{formatPriceToBRL(price)}</ProductPrice>
+          <ProductName>{product.name}</ProductName>
+          <ProductPrice>{formatPriceToBRL(product.price)}</ProductPrice>
         </ProductTextContainer>
       </TouchableOpacity>
     </ProductContainer>
