@@ -1,8 +1,9 @@
 import styled from 'styled-components/native';
+import { FLATNINE_BLACK, FLATNINE_RED } from '../../constants/styles';
 
 const ProductImageBackground = styled.ImageBackground`
   flex: 1;
-  background-color: #171717;
+  background-color: ${FLATNINE_BLACK};
 `;
 
 const ProductImageFilter = styled.View`
@@ -24,14 +25,14 @@ const ProductName = styled.Text`
 `;
 
 const ProductPrice = styled.Text`
-  color: #ff0132;
+  color: ${FLATNINE_RED};
   font-size: 32px;
   text-transform: capitalize;
 `;
 
 const OrderButtonContainer = styled.TouchableOpacity`
   margin-top: 40px;
-  background-color: #ff0132;
+  background-color: ${FLATNINE_RED};
   justify-content: center;
   align-items: center;
   padding: 10px 20px;

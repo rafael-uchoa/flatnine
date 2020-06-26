@@ -1,13 +1,11 @@
 import styled from 'styled-components/native';
-import { Dimensions } from 'react-native';
-
-const SCREEN_WIDTH = `${Dimensions.get('window').width - 20}px`;
+import { SCREEN_WIDTH, FLATNINE_GREY } from '../../constants/styles';
 
 const ButtonContainer = styled.View`
   width: ${SCREEN_WIDTH};
   justify-content: center;
   align-items: center;
-  background-color: #25262a;
+  background-color: ${FLATNINE_GREY};
   border-radius: 7px;
   margin-bottom: 20px;
   padding: 10px 0;

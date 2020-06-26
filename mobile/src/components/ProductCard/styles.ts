@@ -1,10 +1,12 @@
 import styled from 'styled-components/native';
-import { Dimensions } from 'react-native';
-
-const SCREEN_WIDTH = `${Dimensions.get('window').width - 20}px`;
+import {
+  SCREEN_WIDTH,
+  FLATNINE_GREY,
+  FLATNINE_RED,
+} from '../../constants/styles';
 
 const ProductContainer = styled.View`
-  background-color: #25262a;
+  background-color: ${FLATNINE_GREY};
   width: ${SCREEN_WIDTH};
   margin-bottom: 20px;
 `;
@@ -40,7 +42,7 @@ const ProductName = styled.Text`
 `;
 
 const ProductPrice = styled.Text`
-  color: #ff0132;
+  color: ${FLATNINE_RED};
   font-size: 18px;
   text-transform: capitalize;
 `;
