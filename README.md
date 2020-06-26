@@ -45,7 +45,7 @@ Or **clone** the repository:
 - `npm i || yarn`
 - `npm run start || yarn start`
 
-### Mobile-end
+### Mobile
 
 - `cd frontend`
 - `npm i || yarn`
