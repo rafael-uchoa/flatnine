@@ -18,7 +18,7 @@ interface Props {
   price: number;
 }
 
-const Category: React.FC<Props> = ({ imageUrl, name, price }) => {
+const ProductCard: React.FC<Props> = ({ imageUrl, name, price }) => {
   const navigation = useNavigation();
 
   function formatPriceToBRL(price: number) {
@@ -56,4 +56,4 @@ const Category: React.FC<Props> = ({ imageUrl, name, price }) => {
   );
 };
 
-export default Category;
+export default ProductCard;

@@ -5,7 +5,7 @@ import { Container, ProductsContainer } from './styles';
 
 import api from '../../services/api';
 import Header from '../../components/Header';
-import Product from '../../components/Product';
+import ProductCard from '../../components/ProductCard';
 
 const Category: React.FC = () => {
   const [products, setProducts] = useState();
@@ -34,7 +34,7 @@ const Category: React.FC = () => {
           data={products}
           keyExtractor={(product) => String(product._id)}
           renderItem={({ item: product }) => (
-            <Product
+            <ProductCard
               imageUrl={product.imageUrl}
               name={product.name}
               price={product.price}
