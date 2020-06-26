@@ -26,6 +26,7 @@ const Drawer: React.FC = () => {
       />
       {categories.map((category) => (
         <NavigationButton
+          key={category.key}
           name={capitalizeString(category.key)}
           onPress={() => navigateToCategory(category.key)}
         />
