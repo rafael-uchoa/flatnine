@@ -1,0 +1,93 @@
+.Navbar {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+
+    li {
+      padding: 10px;
+      margin-left: 10px;
+      position: relative;
+      cursor: pointer;
+    }
+  }
+
+  @media (max-width: 801px) {
+    margin-top: 20px;
+    padding: 0 20px;
+  }
+
+  @media (max-width: 600px) {
+    background-color: #25262a;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 100vw;
+    margin-top: 0;
+    height: 40px;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    ul {
+      display: none;
+    }
+  }
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+
+  img {
+    width: 70px;
+    margin-right: 20px;
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 20px;
+    }
+
+    img {
+      width: 30px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.underline-animation {
+  li {
+    transition: color 300ms ease-in-out;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background-color: #ff0132;
+
+      transition: transform 300ms ease-in-out;
+      transform: scaleX(0);
+    }
+
+    &:hover,
+    &:focus {
+      color: #ff0132;
+
+      &:before {
+        transform: scaleX(1);
+      }
+    }
+  }
+}

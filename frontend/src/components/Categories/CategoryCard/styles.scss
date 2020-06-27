@@ -1,0 +1,56 @@
+.CategoryCard {
+  background-color: #25262a;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 100%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  img {
+    filter: brightness(50%);
+    width: 100%;
+    height: 100%;
+    transition: filter 300ms ease-in-out;
+  }
+
+  h3 {
+    margin: 20px;
+    transition: color 300ms ease-in-out;
+  }
+
+  &:hover {
+    img {
+      filter: brightness(100%);
+    }
+
+    h3 {
+      color: #ff0132;
+    }
+  }
+
+  @media (max-width: 801px) {
+    height: 150px;
+    position: relative;
+
+    h3 {
+      margin: 0;
+      position: absolute;
+    }
+  }
+
+  @media (max-width: 600px) {
+    box-shadow: none;
+    height: 80px;
+
+    img {
+      display: none;
+    }
+
+    h3 {
+      font-size: 15px;
+    }
+  }
+}

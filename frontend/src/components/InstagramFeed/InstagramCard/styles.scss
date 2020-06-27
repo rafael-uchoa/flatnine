@@ -1,0 +1,53 @@
+.InstagramCard {
+  background-color: #25262a;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 100%;
+  height: 150px;
+  cursor: pointer;
+  position: relative;
+
+  img {
+    filter: brightness(100%);
+    width: 100%;
+    height: 100%;
+    transition: filter 300ms ease-in-out;
+  }
+
+  section {
+    position: absolute;
+    font-size: 35px;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      opacity: 0;
+      padding-top: 20px;
+      transition: all 300ms ease-in-out;
+    }
+  }
+
+  &:hover {
+    img {
+      filter: brightness(50%);
+    }
+
+    section {
+      svg {
+        opacity: 1;
+        padding-top: 0;
+      }
+    }
+  }
+
+  @media (max-width: 801px) {
+    height: auto;
+  }
+}

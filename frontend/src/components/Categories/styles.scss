@@ -1,0 +1,38 @@
+.Categories {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    margin-top: 40px;
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  }
+}
+
+.Categories-Grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  justify-items: center;
+  align-items: center;
+  margin-top: 50px;
+
+  @media (max-width: 801px) {
+    margin: 0 20px;
+    margin-top: 50px;
+  }
+
+  @media (max-width: 600px) {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 95vw;
+    grid-gap: 0px;
+    margin-top: 20px;
+  }
+}

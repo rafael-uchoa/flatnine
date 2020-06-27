@@ -1,0 +1,39 @@
+.GuaranteeCard {
+  background-color: #25262a;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 20px;
+
+  h2 {
+    font-size: 20px;
+  }
+
+  svg,
+  h2 {
+    transition: color 300ms ease-in-out;
+  }
+
+  &:hover {
+    svg,
+    h2 {
+      color: #ff0132;
+    }
+  }
+
+  @media (max-width: 801px) {
+    flex-direction: column;
+    height: 50px;
+
+    h2 {
+      font-size: 15px;
+    }
+
+    svg {
+      display: none;
+    }
+  }
+}

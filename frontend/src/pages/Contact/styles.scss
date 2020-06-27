@@ -1,0 +1,56 @@
+.Contact {
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      margin: 40px 0;
+      font-size: 32px;
+    }
+
+    form {
+      background-color: #25262a;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      width: 750px;
+      padding: 40px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      label {
+        font-size: 15px;
+        font-weight: bold;
+        text-transform: uppercase;
+
+        &:not(:first-child) {
+          margin-top: 40px;
+        }
+      }
+
+      input,
+      textarea {
+        margin-top: 20px;
+        width: 100%;
+        border: none;
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      textarea {
+        height: 200px;
+        resize: vertical;
+      }
+    }
+
+    @media (max-width: 600px) {
+      form {
+        width: 95vw;
+      }
+    }
+  }
+}

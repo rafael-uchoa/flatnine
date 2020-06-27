@@ -1,0 +1,22 @@
+.About {
+  header {
+    img {
+      width: 100%;
+      margin-top: 40px;
+      filter: brightness(80%);
+    }
+  }
+
+  h2,
+  p {
+    margin-top: 20px;
+  }
+
+  @media (max-width: 801px) {
+    header,
+    h2,
+    p {
+      padding: 0 10px;
+    }
+  }
+}

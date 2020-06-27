@@ -1,0 +1,35 @@
+.Topbar {
+  background-color: #25262a;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  ul {
+    display: flex;
+
+    li {
+      margin-left: 20px;
+      font-size: 14px;
+      padding: 10px 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      svg {
+        margin-right: 10px;
+        font-size: 20px;
+      }
+
+      &:first-child {
+        svg {
+          color: #ff0132;
+        }
+      }
+
+      &:not(:first-child) {
+        background-color: #ff0132;
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+.Login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  form {
+    background-color: #25262a;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 750px;
+    padding: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    svg {
+      position: absolute;
+      z-index: 1;
+      top: 10px;
+      right: 10px;
+      color: #ff0132;
+      font-size: 40px;
+    }
+
+    label {
+      font-size: 15px;
+      font-weight: bold;
+      text-transform: uppercase;
+
+      &:not(:first-child) {
+        margin-top: 40px;
+      }
+    }
+
+    input {
+      margin-top: 20px;
+      width: 100%;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    form {
+      width: 95vw;
+    }
+  }
+}

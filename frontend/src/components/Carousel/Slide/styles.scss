@@ -1,0 +1,45 @@
+.Slide {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  section {
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+
+    h1 {
+      font-size: 50px;
+    }
+
+    p {
+      margin-top: 50px;
+      padding: 0 200px;
+      font-size: 20px;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    filter: brightness(50%);
+  }
+
+  @media (max-width: 600px) {
+    section {
+      h1 {
+        font-size: 24px;
+      }
+
+      p {
+        display: none;
+      }
+    }
+
+    img {
+      height: 100%;
+    }
+  }
+}
