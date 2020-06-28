@@ -1,0 +1,48 @@
+.ProductCard {
+  background-color: #25262a;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+  }
+
+  h3,
+  h2 {
+    padding: 20px;
+  }
+
+  h2 {
+    color: #ff0132;
+  }
+
+  @media (max-width: 801px) {
+    height: 150px;
+    position: relative;
+
+    h3,
+    h2 {
+      margin: 0;
+      position: absolute;
+    }
+  }
+
+  @media (max-width: 600px) {
+    box-shadow: none;
+    height: 80px;
+
+    img {
+      display: none;
+    }
+
+    h3,
+    h2 {
+      font-size: 15px;
+    }
+  }
+}
