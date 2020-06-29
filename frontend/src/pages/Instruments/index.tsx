@@ -12,15 +12,11 @@ const Instruments: React.FC = () => {
   const [products, setProducts] = useState<any>();
 
   useEffect(() => {
-    console.log('hi');
     fetchProducts('');
   }, []);
 
   async function fetchProducts(category: string) {
-    console.log('hello');
     const res = await api.get(category);
-
-    console.log(res.data);
 
     setProducts(res.data.products);
   }
