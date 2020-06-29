@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './styles.scss';
-import api from '../../services/api';
 
 import Topbar from '../../components/Topbar';
 import Navbar from '../../components/Navbar';
@@ -8,18 +7,14 @@ import Categories from '../../components/Categories';
 import ProductCard from '../../components/ProductCard';
 import Footer from '../../components/Footer';
 
+import { ProductsContext } from '../../context/products';
+
 const Instruments: React.FC = () => {
-  const [products, setProducts] = useState<any>();
+  const { products, getProducts } = useContext(ProductsContext);
 
   useEffect(() => {
-    fetchProducts('');
-  }, []);
-
-  async function fetchProducts(category: string) {
-    const res = await api.get(category);
-
-    setProducts(res.data.products);
-  }
+    if (products.length === 0) getProducts('');
+  }, [products, getProducts]);
 
   return (
     <div>
