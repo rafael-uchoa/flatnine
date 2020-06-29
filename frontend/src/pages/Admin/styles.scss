@@ -1,0 +1,71 @@
+.Admin {
+  header {
+    margin: 20px 0;
+    padding-right: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    svg {
+      color: #ff0132;
+      font-size: 32px;
+      margin-right: 20px;
+    }
+
+    img {
+      width: 40px;
+      margin-right: 10px;
+    }
+  }
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 500px;
+    margin-bottom: 20px;
+
+    label {
+      margin-bottom: 4px;
+    }
+
+    input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 4px 8px;
+      margin-top: 20px;
+      background-color: #ff0132;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+
+  ul {
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #25262a;
+      border-radius: 7px;
+      padding: 10px;
+      margin-bottom: 4px;
+
+      svg {
+        color: #ff0132;
+        font-size: 22px;
+        margin-left: 20px;
+        cursor: pointer;
+      }
+    }
+  }
+}

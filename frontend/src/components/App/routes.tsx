@@ -6,6 +6,7 @@ import Instruments from '../../pages/Instruments';
 import About from '../../pages/About';
 import Contact from '../../pages/Contact';
 import Login from '../../pages/Login';
+import Admin from '../../pages/Admin';
 
 const Routes: React.FC = () => (
   <BrowserRouter>
@@ -15,6 +16,7 @@ const Routes: React.FC = () => (
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
       <Route path="/login" component={Login} />
+      <Route path="/admin" component={Admin} />
     </Switch>
   </BrowserRouter>
 );

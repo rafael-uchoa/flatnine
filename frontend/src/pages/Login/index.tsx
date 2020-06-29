@@ -8,7 +8,7 @@ const Login: React.FC = () => {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    history.push('/');
+    history.push('/admin');
   }
 
   return (
