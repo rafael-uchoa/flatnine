@@ -4,7 +4,7 @@
   <br>
 </div>
 
-<h4 align="center">Fullstack music store developed with React, React Native & Node.js.</h4>
+<h4 align="center">:guitar: Music store developed with React, React Native, Node.js & MongoDB.</h4>
 
 ## About
 
