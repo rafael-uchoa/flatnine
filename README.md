@@ -51,6 +51,18 @@ Or **clone** the repository:
 - `npm i || yarn`
 - `npm run start || yarn start`
 
+## Built with
+
+- TypeScript
+- React
+- React Native
+- Expo
+- Sass
+- Styled Components
+- Node.js
+- MongoDB
+- Jest
+
 ## License
 
 This project is under **MIT** license.
